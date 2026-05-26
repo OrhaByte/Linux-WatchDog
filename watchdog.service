@@ -1,0 +1,28 @@
+[Unit]
+Description=Watchdog Linux Server Monitor
+After=network.target
+Documentation=https://github.com/OrhaByte/Linux-WatchDog/
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/watchdog /etc/watchdog/config.json
+Restart=on-failure
+RestartSec=5s
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log/watchdog /etc/watchdog
+
+# Resource limits (low memory footprint)
+MemoryMax=64M
+CPUQuota=10%
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=watchdog
+
+[Install]
+WantedBy=multi-user.target

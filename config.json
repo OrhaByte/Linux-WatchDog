@@ -1,0 +1,108 @@
+{
+  "log_dir": "/var/log/watchdog",
+  "collectors": {
+    "net_traffic": {
+      "enabled": true,
+      "interval_secs": 60,
+      "alert_threshold_bytes_per_sec": 10485760
+    },
+    "socket_connections": {
+      "enabled": true,
+      "interval_secs": 30,
+      "summary_interval_secs": 300,
+      "alert_ports": [
+        4444,
+        1337,
+        31337,
+        9001,
+        6666,
+        5555
+      ],
+      "ignore_ports": [
+        80,
+        443
+      ]
+    },
+    "reverse_shell": {
+      "enabled": true,
+      "interval_secs": 10,
+      "extra_patterns": []
+    },
+    "cron": {
+      "enabled": true,
+      "watch_paths": [
+        "/etc/crontab",
+        "/etc/cron.d",
+        "/var/spool/cron",
+        "/var/spool/cron/crontabs"
+      ],
+      "interval_secs": 60
+    },
+    "upload_detect": {
+      "enabled": true,
+      "interval_secs": 30,
+      "alert_bytes": 10485760,
+      "whitelist": []
+    },
+    "ssh_audit": {
+      "enabled": true,
+      "log_path": "/var/log/auth.log",
+      "interval_secs": 5,
+      "brute_force_threshold": 5
+    },
+    "fim": {
+      "enabled": true,
+      "interval_secs": 60,
+      "watch_paths": [
+        "/etc/passwd",
+        "/etc/shadow",
+        "/etc/sudoers",
+        "/etc/ssh/sshd_config",
+        "/etc/hosts"
+      ]
+    },
+    "port_monitor": {
+      "enabled": true,
+      "interval_secs": 30,
+      "ignore_ports": []
+    },
+    "log_tamper": {
+      "enabled": true,
+      "interval_secs": 30,
+      "watch_paths": [
+        "/var/log/watchdog",
+        "/var/log/auth.log",
+        "/var/log/syslog"
+      ]
+    }
+  },
+  "dashboard": {
+    "enabled": true,
+    "bind": "127.0.0.1:8081",
+    "username": "administrator",
+    "password": "sha256:ec97ebd9548a85be0ec732204e8c4a72:ef808a39d8f227a72777641365db340428f9abfab8eb57f734252bb769af01af",
+    "session_ttl_secs": 3600,
+    "static_dir": "./dist"
+  },
+  "log_rotation": {
+    "keep_days": 30
+  },
+  "smtp": {
+    "enabled": true,
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "username": "yourIT@domain.com",
+    "password": "",
+    "from_email": "yourIT@domain.com",
+    "recipients": [
+      "youremail@gmail.com"
+    ],
+    "alert_on": [
+      "CRITICAL"
+    ],
+    "use_starttls": true,
+    "server_name": ""
+  },
+  "product_key": "prodkey256:046a40d4c23dfb05078b00300165b8be78f04fd7884a112528835767707dfd762e64c647d005bc274e6c61294bc7246c22b4982e778ba37f33d2a55328152a06:323039392d31322d33317c434f4d4d554e49545945444954494f4e",
+  "instance_id": "COMMUNITYEDITION"
+}
