@@ -91,7 +91,7 @@ The installer will:
 - Create the log directory at `/var/log/watchdog/`
 - Register and start a **systemd** service
 
-After installation the dashboard is available at `http://127.0.0.1:8081` (default credentials: `administrator` / `SecurePass123#` — change immediately in from control panel).
+After installation the dashboard is available at `http://127.0.0.1:8081` or your server IP (default credentials: `administrator` / `SecurePass123#` — change immediately in from control panel).
 
 ### Managing the service
 
@@ -109,8 +109,28 @@ sudo journalctl -u watchdog -f      # live daemon logs
 |---|---|
 | **Daemon / Backend** | [Rust](https://www.rust-lang.org/) · [Tokio](https://tokio.rs/) async runtime · [Axum](https://github.com/tokio-rs/axum) HTTP server |
 | **Dashboard / Frontend** | [React 18](https://react.dev/) · [TypeScript](https://www.typescriptlang.org/) · [Vite](https://vitejs.dev/) · [MUI](https://mui.com/) |
-| **Cryptography** | AES-256 / XOR-256 encrypted config fields; SHA-256 product key signing |
+| **Cryptography** | AES-256 encrypted config fields; Ed25519 product key signing |
 | **Packaging** | Single static binary + pre-built `dist/` folder; no external runtime dependencies |
+
+---
+
+## Pricing
+
+| Plan | Price | What's included |
+|---|---|---|
+| **Community Edition** | Free forever | All core features · GPL-3.0 licensed · No expiry |
+| **Starter** | $59 / year | All Pro features · Email alerts · Priority support |
+| **Patron** | $99 / year | Everything in Starter · **Sponsored badge** in the repository |
+
+> Patron sponsors receive a permanent sponsored badge in the WatchDog repository acknowledging their support.
+
+### How to upgrade
+
+1. Pay via **[PayPal](https://www.paypal.com/paypalme/linuxwatchdog)** — select the amount matching your chosen plan ($59 for Starter, $99 for Patron).
+2. Send an email to [info@orhabyte.com](mailto:info@orhabyte.com) with your PayPal transaction ID and the machine's instance ID (shown in the dashboard under **Settings → Licence**).
+3. You will receive a product key by email, usually within 24 hours.
+
+> **PayPal:** [paypal.me/linuxwatchdog](https://www.paypal.com/paypalme/linuxwatchdog)
 
 ---
 
@@ -119,7 +139,7 @@ sudo journalctl -u watchdog -f      # live daemon logs
 WatchDog is distributed under the **GNU General Public License v3.0**.  
 See [`LICENSE`](LICENSE) for the full text.
 
-> **Community Edition is free forever.** You may use, modify, and redistribute WatchDog under the terms of the GPL-3.0 licence at no cost. Pro features are available through a commercial licence — contact us for pricing.
+> **Community Edition is free forever.** You may use, modify, and redistribute WatchDog under the terms of the GPL-3.0 licence at no cost. Pro features are available through a commercial licence — see the pricing table above.
 
 ---
 
